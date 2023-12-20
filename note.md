@@ -30,3 +30,13 @@ rosnode info /节点名字      *** rosnode info /rosout
 # 运行软件包内的节点
 rosrun 包名 节点名     ***  rosrun turtlesim turtlesim_node 
 ***   rosrun turtlesim turtlesim_node __name:=my_turtle    重映射参数，改变了节点的名字
+
+
+
+
+#----------------- bug while run the carla-ros-bridge---------------------------
+# 报错：RuntimeError: rpc::rpc_error during call in get_sensor_token 
+检查egg文件有没有加入到环境变量中去，如果按照readme文件export不行的话，
+将 export PYTHONPATH= " ${CARLA_ROOT} /PythonAPI/carla/ " : " ${ SCENARIO_RUNNER_ROOT} " : " ${LEADERBOARD_ROOT} "
+改成 export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${LEADERBOARD_ROOT}":"${CARLA_ROOT}/PythonAPI/carla/dist/carla-0.9.10-py3.7-linux-x86_64.egg":${PYTHONPATH}
+
